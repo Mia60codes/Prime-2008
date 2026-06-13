@@ -1,0 +1,6 @@
+{
+  "name": "PRIME PICKS 2008",
+  "description": "App ya kidijitali ya betting tips ikitoa Roll over, Daily tips, na Trending tips zenye ushindi mnono.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
