@@ -25,6 +25,9 @@ const ai = process.env.GEMINI_API_KEY
 // JSON parser
 app.use(express.json());
 
+// Serve local assets as static files so path refs like /src/assets/images/... work perfectly in both dev and prod
+app.use("/src/assets", express.static(path.join(process.cwd(), "src/assets")));
+
 // 1. API: Get all current mock betting tips
 app.get("/api/tips", (req, res) => {
   res.json({ tips: MOCK_TIPS });
