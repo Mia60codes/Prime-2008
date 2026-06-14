@@ -2,6 +2,7 @@ import React from 'react';
 import { BettingTip } from '../types';
 import { Clock, ShieldCheck, Check, Eye, Trophy, Sparkles } from 'lucide-react';
 import { MOCK_TIPSTERS } from '../data/mockTips';
+import TipsterAvatar from './TipsterAvatar';
 
 interface TipCardProps {
   key?: React.Key;
@@ -90,11 +91,10 @@ export default function TipCard({ tip, isSelected, onToggleSelect, onViewAnalysi
         {/* Left Side: Tipster Profile */}
         <div className="flex items-center gap-3">
           <div className="relative">
-            <img
-              src={tipster.avatarUrl}
-              alt={tipster.name}
-              referrerPolicy="no-referrer"
-              className={`w-11 h-11 rounded-xl object-cover ring-2 ${
+            <TipsterAvatar
+              name={tipster.name}
+              id={tipster.id}
+              sizeClassName={`w-11 h-11 ring-2 ${
                 isSelected ? 'ring-orange-500/30' : 'ring-slate-800'
               }`}
             />

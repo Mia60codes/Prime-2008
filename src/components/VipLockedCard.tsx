@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Tipster } from '../types';
 import { Lock, Eye, Clock, ShieldCheck, Flame } from 'lucide-react';
+import TipsterAvatar from './TipsterAvatar';
 
 interface VipLockedCardProps {
   key?: React.Key;
@@ -117,11 +118,10 @@ export default function VipLockedCard({ tipster, isExpired, expiryTime, onUnlock
         {/* Left Side: Tipster Profile (Watu's Profile) */}
         <div className="flex items-center gap-3">
           <div className="relative">
-            <img
-              src={tipster.avatarUrl}
-              alt={tipster.name}
-              referrerPolicy="no-referrer"
-              className={`w-11 h-11 rounded-xl object-cover ring-2 ${
+            <TipsterAvatar
+              name={tipster.name}
+              id={tipster.id}
+              sizeClassName={`w-11 h-11 ring-2 ${
                 isExpired ? 'ring-rose-950/20' : 'ring-orange-500/30'
               }`}
             />

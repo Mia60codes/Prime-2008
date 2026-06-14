@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, Eye, ChevronDown, ChevronUp, AlertCircle, Sparkles, Trophy, Clock } from 'lucide-react';
 import { Tipster } from '../types';
 import { MOCK_TIPS } from '../data/mockTips';
+import TipsterAvatar from './TipsterAvatar';
 
 interface TipsterDetailModalProps {
   isOpen: boolean;
@@ -211,11 +212,10 @@ Please process my prompt booking request and send my ticket code link now. Thank
         <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800/40 shrink-0">
           <div className="flex items-center gap-2">
             <div className="relative">
-              <img 
-                src={tipster.avatarUrl} 
-                alt={tipster.name} 
-                className="w-8 h-8 rounded-lg object-cover ring-2 ring-slate-800"
-                referrerPolicy="no-referrer"
+              <TipsterAvatar 
+                name={tipster.name} 
+                id={tipster.id} 
+                sizeClassName="w-8 h-8 ring-2 ring-slate-800"
               />
               {tipster.isVerified && (
                 <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border border-slate-950 flex items-center justify-center text-[6px] font-bold text-slate-950">✓</span>

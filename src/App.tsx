@@ -6,6 +6,7 @@ import TipCard from './components/TipCard';
 import AiAdvisor from './components/AiAdvisor';
 import TipsterDetailModal from './components/TipsterDetailModal';
 import VipLockedCard from './components/VipLockedCard';
+import TipsterAvatar from './components/TipsterAvatar';
 import { 
   Trophy, 
   Flame, 
@@ -623,11 +624,10 @@ export default function App() {
 
                         {/* Avatar Wrapper with Verification Circle */}
                         <div className="relative w-14 h-14 mx-auto mb-2">
-                          <img 
-                            src={t.avatarUrl} 
-                            alt={t.name}
-                            referrerPolicy="no-referrer"
-                            className={`w-14 h-14 rounded-xl object-cover ring-2 ${
+                          <TipsterAvatar
+                            name={t.name}
+                            id={t.id}
+                            sizeClassName={`w-14 h-14 ring-2 ${
                               isFirst ? 'ring-amber-500/50' : 'ring-slate-850'
                             }`}
                           />
@@ -684,11 +684,10 @@ export default function App() {
                         )}
 
                         <div className="relative w-14 h-14 mx-auto mb-2">
-                          <img 
-                            src={t.avatarUrl} 
-                            alt={t.name}
-                            referrerPolicy="no-referrer"
-                            className={`w-14 h-14 rounded-xl object-cover ring-2 ${
+                          <TipsterAvatar
+                            name={t.name}
+                            id={t.id}
+                            sizeClassName={`w-14 h-14 ring-2 ${
                               isFirst ? 'ring-amber-500/50' : 'ring-slate-850'
                             }`}
                           />
@@ -759,11 +758,10 @@ export default function App() {
                         ) : null}
                         
                         <div className="relative w-14 h-14 mx-auto mb-2">
-                          <img 
-                            src={t.avatarUrl} 
-                            alt={t.name}
-                            referrerPolicy="no-referrer"
-                            className={`w-14 h-14 rounded-xl object-cover ring-2 ${
+                          <TipsterAvatar
+                            name={t.name}
+                            id={t.id}
+                            sizeClassName={`w-14 h-14 ring-2 ${
                               tExpired 
                                 ? 'ring-rose-950/30' 
                                 : isFirst ? 'ring-amber-500/50' : 'ring-slate-850'
