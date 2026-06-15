@@ -310,7 +310,9 @@ export default function AdminMatchPanel({
                     >
                       <option value="Today">Today (Leo)</option>
                       <option value="Tomorrow">Tomorrow (Kesho)</option>
-                      <option value="3 Days Ago">3 Days Ago (Meneja tu)</option>
+                      <option value="Yesterday">Yesterday (Jana / Historia)</option>
+                      <option value="2 Days Ago">2 Days Ago (Siku 2 zilizopita)</option>
+                      <option value="3 Days Ago">3 Days Ago (Siku 3 zilizopita)</option>
                     </select>
                   </div>
                   <div className="space-y-1">

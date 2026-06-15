@@ -43,57 +43,7 @@ export const ACTIVE_MECHI_ZETU: BettingTip[] = [
   // ===================================================================
   // 🔥 KUNDI C: TRENDING TIPS (Hapa unaweza kuongeza mechi za Trending!)
   // ===================================================================
-    
   {
-    id: 'm-trend-1',
-    teams: ['Spain', 'Cape Varde'],
-    league: 'Tanzania NBC Premier League',
-    time: '19:00',
-    date: 'Yesterday,
-    odds: 1.20,
-    tip: 'Spain to winn(1)',
-    tipExplanation: 'Kariakoo Derby action! Yanga are in great form and play on home turf with highly motivated squads.',
-    category: 'trending',
-    probability: 88,
-    status: 'won',
-    risk: 'Medium',
-    tipsterId: 't-5' // Trending Tips
-  },
-
- {
-    id: 'm-trend-1',
-    teams: ['Young Africans', 'Simba SC'],
-    league: 'Tanzania NBC Premier League',
-    time: '17:00',
-    date: 'Yesterday',
-    odds: 1.82,
-    tip: 'Young Africans to Win (1)',
-    tipExplanation: 'Kariakoo Derby action! Yanga are in great form and play on home turf with highly motivated squads.',
-    category: 'trending',
-    probability: 88,
-    status: 'won',
-    risk: 'Medium',
-    tipsterId: 't-5' // Trending Tips
-  },
-
-
- {
-    id: 'm-trend-1',
-    teams: ['Young Africans', 'Simba SC'],
-    league: 'Tanzania NBC Premier League',
-    time: '17:00',
-    date: 'Yesterday',
-    odds: 1.82,
-    tip: 'Young Africans to Win (1)',
-    tipExplanation: 'Kariakoo Derby action! Yanga are in great form and play on home turf with highly motivated squads.',
-    category: 'trending',
-    probability: 88,
-    status: 'won',
-    risk: 'Medium',
-    tipsterId: 't-5' // Trending Tips
-  },
-
-{
     id: 'm-trend-1',
     teams: ['Young Africans', 'Simba SC'],
     league: 'Tanzania NBC Premier League',
