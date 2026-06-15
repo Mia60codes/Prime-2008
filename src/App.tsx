@@ -7,6 +7,7 @@ import AiAdvisor from './components/AiAdvisor';
 import TipsterDetailModal from './components/TipsterDetailModal';
 import VipLockedCard from './components/VipLockedCard';
 import TipsterAvatar from './components/TipsterAvatar';
+import AdminMatchPanel from './components/AdminMatchPanel';
 import { 
   Trophy, 
   Flame, 
@@ -44,6 +45,30 @@ export default function App() {
   const [session, setSession] = useState<UserSession | null>(null);
   const [loadingScreen, setLoadingScreen] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<'home' | 'all-tips' | 'ai' | 'slip' | 'account'>('home');
+  
+  // States for Admin Match Manager
+  const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
+  const [tipsList, setTipsList] = useState<BettingTip[]>(() => {
+    const localSaved = localStorage.getItem('active_tips_custom_v1');
+    if (localSaved) {
+      try {
+        return JSON.parse(localSaved);
+      } catch (e) {
+        // fallback to MOCK_TIPS
+      }
+    }
+    return MOCK_TIPS;
+  });
+
+  const handleUpdateTips = (newTips: BettingTip[]) => {
+    setTipsList(newTips);
+    localStorage.setItem('active_tips_custom_v1', JSON.stringify(newTips));
+  };
+
+  const handleResetTipsToDefault = () => {
+    setTipsList(MOCK_TIPS);
+    localStorage.removeItem('active_tips_custom_v1');
+  };
   const [selectedTipsCategory, setSelectedTipsCategory] = useState<'all' | 'rollover' | 'daily' | 'trending' | 'live_capital'>('all');
   const [tipsters, setTipsters] = useState<Tipster[]>(MOCK_TIPSTERS);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -282,7 +307,7 @@ export default function App() {
     );
   };
 
-  const selectedTips = MOCK_TIPS.filter((tip) => selectedTipIds.includes(tip.id));
+  const selectedTips = tipsList.filter((tip) => selectedTipIds.includes(tip.id));
   const totalOdds = selectedTips.reduce((acc, tip) => acc * tip.odds, 1);
   const potentialPayout = totalOdds * stakeAmount;
 
@@ -300,7 +325,7 @@ export default function App() {
   const fastStakes = [1000, 2000, 5000, 10000, 25000, 50000];
 
   // Filter tips based on search query (by team names or league name)
-  const filteredTips = MOCK_TIPS.filter((tip) => {
+  const filteredTips = tipsList.filter((tip) => {
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
     return (
@@ -1152,6 +1177,25 @@ export default function App() {
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-500" />
                 </button>
+
+                {/* 4. Admin Match Manager (Swahili Creator Panel) */}
+                <button
+                  onClick={() => setIsAdminOpen(true)}
+                  className="w-full flex items-center justify-between p-4 bg-orange-500/5 hover:bg-orange-500/10 cursor-pointer text-left transition-all border-l-2 border-orange-500"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center border border-orange-500/30">
+                      <Trophy className="w-4 h-4 text-orange-400" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-black text-orange-400 uppercase tracking-wider flex items-center gap-1.5">
+                        Meneja wa Mechi (ADMIN) 👑
+                      </span>
+                      <p className="text-[9px] text-slate-400">Ongeza mechi au badili matokeo kwa urahisi</p>
+                    </div>
+                  </div>
+                  <span className="text-[8px] bg-orange-500 text-slate-950 font-black px-1.5 py-0.5 rounded uppercase font-mono">FUNGUA</span>
+                </button>
               </div>
             </div>
 
@@ -1654,7 +1698,7 @@ export default function App() {
               <div className="space-y-4 max-h-[380px] overflow-y-auto pr-1">
                 {(() => {
                   // Filter for VIP completed and won tips
-                  const vipCompletedTips = MOCK_TIPS.filter(tip => 
+                  const vipCompletedTips = tipsList.filter(tip => 
                     ['t-1', 't-6', 't-7', 't-8', 't-9', 't-12', 't-13', 't-14', 't-15'].includes(tip.tipsterId) && 
                     tip.status === 'won' && 
                     ['Yesterday', '2 Days Ago', '3 Days Ago'].includes(tip.date)
@@ -1783,6 +1827,15 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* Admin Panel Modal Overlay */}
+      <AdminMatchPanel
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
+        tipsList={tipsList}
+        onUpdateTips={handleUpdateTips}
+        onResetToDefault={handleResetTipsToDefault}
+      />
     </div>
   );
 }

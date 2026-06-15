@@ -1,4 +1,5 @@
 import { BettingTip, CountryInfo, Tipster } from '../types';
+import { ACTIVE_MECHI_ZETU } from './mechi_zetu';
 
 // =========================================================================
 // 🇹🇿 SEHEMU YA 1: MUDA WA COUNTDOWN TIMERS KWA KILA PROFILE YA LIVE BET
@@ -12,7 +13,7 @@ import { BettingTip, CountryInfo, Tipster } from '../types';
 // Ukibadili muda hapa, countdown timer yake kwenye simu itajiseti automatic kwa dakika hizo!
 export const LIVE_BET_TIMERS_CONFIG: Record<string, { name: string; durationMinutes: number }> = {
   't-12': { name: 'MIA 60 (Live In-Play)', durationMinutes: 60 },      // Dakika 60 = Lisaa 1
-  't-13': { name: 'Forty4 (Live Ticket)', durationMinutes: 56 },       // Dakika 56 = Zilizobaki
+  't-13': { name: 'Forty4 (Live Ticket)', durationMinutes: 11 },       // Dakika 11 = Zilizobaki
   't-14': { name: 'Tazar (Live In-Play)', durationMinutes: 45 },       // Dakika 45
   't-15': { name: 'MR 10+ ODDS (Premium)', durationMinutes: 120 }     // Dakika 120 = Saa 2
 };
@@ -259,7 +260,7 @@ export const MOCK_TIPSTERS: Tipster[] = [
 //    - 'lost': Imepoteza
 // Kila id lazima iwe ya kipekee kabisa (mfano: 'free-game-12')
 // =========================================================================
-export const MOCK_TIPS: BettingTip[] = [
+export const HISTORICAL_TIPS: BettingTip[] = [
 
   // ===================================================================
   // 🎯 KUNDI A: FREE ROLLOVER TIPS (Hapa unaweza kuongeza mechi za Rollover)
@@ -975,4 +976,9 @@ export const MOCK_TIPS: BettingTip[] = [
     risk: 'Low',
     tipsterId: 't-8'
   }
+];
+
+export const MOCK_TIPS: BettingTip[] = [
+  ...ACTIVE_MECHI_ZETU,
+  ...HISTORICAL_TIPS
 ];

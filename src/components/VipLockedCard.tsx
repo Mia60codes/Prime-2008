@@ -42,7 +42,7 @@ export default function VipLockedCard({ tipster, isExpired, expiryTime, onUnlock
 
   const getTipsterOdds = (name: string): string => {
     switch (name.toUpperCase()) {
-      case 'MIA 60': return '50.30';
+      case 'MIA 60': return '10.30';
       case 'FORTY4': return '15.15';
       case 'TAZAR': return '8.50';
       case 'MR 10+ ODDS': return '12.40';
